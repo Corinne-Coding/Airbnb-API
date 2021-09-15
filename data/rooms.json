@@ -1,0 +1,167 @@
+[
+  {
+    "_id": "58ff73d11765a998979a3396",
+    "title": "Eiffel Tower Luxury 90m², 2 Terraces",
+    "description": "This is a completely renovated flat, close to Eiffel Tower and the Seine river, meant to inspire a true Parisian experience. Elegant two bedrooms of about 90 sqm with 2 terraces and a private car park.",
+    "price": 219,
+    "ratingValue": 5,
+    "reviews": 84,
+    "loc": { "lat": 48.848585, "lng": 2.292102 },
+    "photos": [
+      {
+        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_1099/v1584458967/airbnb/58ff73cc1765a998979a3390/zFGBEikZoRg_tph2dy.jpg",
+        "picture_id": "zFGBEikZoRg_tph2dy"
+      },
+      {
+        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_1032/v1584459021/airbnb/58ff73cc1765a998979a3390/U7PitHRnT_jo8m3p.jpg",
+        "picture_id": "U7PitHRnT_jo8m3p"
+      },
+      {
+        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_1063/v1584459064/airbnb/58ff73cc1765a998979a3390/nCXHU1hKk_vf1atn.jpg",
+        "picture_id": "nCXHU1hKk_vf1atn"
+      },
+      {
+        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_1023/v1584459076/airbnb/58ff73cc1765a998979a3390/hernaJFvHk_rpubek.jpg",
+        "picture_id": "hernaJFvHk_rpubek"
+      },
+      {
+        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_1090/v1584458953/airbnb/58ff73cc1765a998979a3390/bd3sXD-jpg_eqkyd9.jpg",
+        "picture_id": "bd3sXD-jpg_eqkyd9"
+      }
+    ],
+    "user": "58ff73cc1765a998979a3390"
+  },
+
+  {
+    "_id": "58ff73d11765a998979a3397",
+    "title": "Unique & Cozy apartment in Paris",
+    "description": "The apartment has been renovated very recently with a chic and cozy Parisian style. It is located in the south of the 15th, so a rather quiet area but very accessible by transport to go to the very center.",
+    "price": 120,
+    "ratingValue": 5,
+    "reviews": 22,
+    "loc": { "lat": 48.834921, "lng": 2.296913 },
+    "photos": [
+      {
+        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_1077/v1584459549/airbnb/58ff73cc1765a998979a338d/ZMIrSYeDEsc_xxt9vi.jpg",
+        "picture_id": "ZMIrSYeDEsc_xxt9vi"
+      },
+      {
+        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_1099/v1584459617/airbnb/58ff73cc1765a998979a338d/grant-N90LM3A5AZQjpg_jvfd6z.jpg",
+        "picture_id": "grant-N90LM3A5AZQjpg_jvfd6z"
+      },
+      {
+        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_1028/v1584459634/airbnb/58ff73cc1765a998979a338d/-L6OoL86ut-kjpg_vrkfzc.jpg",
+        "picture_id": "-L6OoL86ut-kjpg_vrkfzc"
+      },
+      {
+        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_1013/v1584459587/airbnb/58ff73cc1765a998979a338d/intaJtmQloUM_mqnksk.jpg",
+        "picture_id": "intaJtmQloUM_mqnksk"
+      },
+      {
+        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_1087/v1584459579/airbnb/58ff73cc1765a998979a338d/XuXpeM0_xtt1mq.jpg",
+        "picture_id": "XuXpeM0_xtt1mq"
+      }
+    ],
+    "user": "58ff73cc1765a998979a338d"
+  },
+
+  {
+    "_id": "58ff73d11765a998979a33a0",
+    "title": "French modern and luxury style apartment",
+    "description": "Located in the center of the city , French style, you can get everything downstairs : restaurants, bars, supermakets, pharmacy and so on.",
+    "price": 180,
+    "ratingValue": 4,
+    "reviews": 56,
+    "loc": { "lat": 48.85939, "lng": 2.32687 },
+    "photos": [
+      {
+        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_1067/v1584459953/airbnb/58ff73cc1765a998979a338c/MyeOnGcibC_r9xzyn.jpg",
+        "picture_id": "MyeOnGcibC_r9xzyn"
+      },
+      {
+        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_1119/v1584459967/airbnb/58ff73cc1765a998979a338c/I72dFJRFT3_slw27r.jpg",
+        "picture_id": "I72dFJRFT3_slw27r"
+      },
+      {
+        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_1006/v1584460021/airbnb/58ff73cc1765a998979a338c/B9J6abAHPA_yequhw.jpg",
+        "picture_id": "B9J6abAHPA_yequhw"
+      },
+      {
+        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_1015/v1584460035/airbnb/58ff73cc1765a998979a338c/5MEFBvXKMVg_xjlv9l.jpg",
+        "picture_id": "5MEFBvXKMVg_xjlv9l"
+      }
+    ],
+    "user": "58ff73cc1765a998979a338c"
+  },
+
+  {
+    "_id": "58ff73cc1765a99897945391",
+    "title": "Charming apartment",
+    "description": "Charming studio, functional. Perfect for a professional stay or for an holiday.",
+    "price": 110,
+    "ratingValue": 5,
+    "reviews": 15,
+    "loc": { "lat": 48.8589507, "lng": 2.3325361 },
+    "photos": [
+      {
+        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_987/v1584460279/airbnb/58ff73cc1765a998979a338e/-lZsPR_tsQpw_amt37i.jpg",
+        "picture_id": "-lZsPR_tsQpw_amt37i"
+      },
+      {
+        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_1037/v1584460300/airbnb/58ff73cc1765a998979a338e/c0KnE3lCs_qwz897.jpg",
+        "picture_id": "c0KnE3lCs_qwz897"
+      },
+      {
+        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_1056/v1584460331/airbnb/58ff73cc1765a998979a338e/jeZef9dczWMQ_arkwk8.jpg",
+        "picture_id": "jeZef9dczWMQ_arkwk8"
+      }
+    ],
+    "user": "58ff73cc1765a998979a338e"
+  },
+
+  {
+    "_id": "58ff73cc1765a9979391c532",
+    "title": "Great location in Paris",
+    "description": "Little paradise, very trendy and exotic. This charming cocoon is for 3 persons, with private bathroom.",
+    "price": 200,
+    "ratingValue": 4,
+    "reviews": 34,
+    "loc": { "lat": 48.8480923, "lng": 2.3215788 },
+    "photos": [
+      {
+        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_985/v1584460392/airbnb/58ff73cc1765a998979a338e/FBXuXp57eM0_h_ysf2dp.jpg",
+        "picture_id": "FBXuXp57eM0_h_ysf2dp"
+      },
+      {
+        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_1103/v1584460355/airbnb/58ff73cc1765a998979a338e/fiazeides_fxghgo.jpg",
+        "picture_id": "fiazeides_fxghgo"
+      },
+      {
+        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_1038/v1584460399/airbnb/58ff73cc1765a998979a338e/EzoCn-jpg_goqxym.jpg",
+        "picture_id": "EzoCn-jpg_goqxym"
+      }
+    ],
+    "user": "58ff73cc1765a998979a338e"
+  },
+
+  {
+    "_id": "58ff73cc1765a998979a3391",
+    "title": "Very Nice & Comfy Flat ",
+    "description": "A nice & comfy Parisian apartment. Enjoy your staying in Paris in the most luxurious area of the world for the best price !",
+    "price": 190,
+    "ratingValue": 5,
+    "reviews": 8,
+    "loc": { "lat": 48.863652, "lng": 2.361898 },
+    "photos": [
+      {
+        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_1148/v1584460864/airbnb/58ff73cc1765a998979a338f/df45f45-_pdzdts.jpg",
+        "picture_id": "df45f45-_pdzdts"
+      },
+      {
+        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_1134/v1584460846/airbnb/58ff73cc1765a998979a338f/8MrEZAvyEjpg_ejisai.jpg",
+        "picture_id": "8MrEZAvyEjpg_ejisai"
+      }
+    ],
+    "user": "58ff73cc1765a998979a338f"
+  }
+]

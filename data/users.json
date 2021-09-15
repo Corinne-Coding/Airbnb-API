@@ -1,0 +1,72 @@
+[
+  {
+    "_id": "58ff73cc1765a998979a3390",
+    "email": "alice@airbnb-api.com",
+    "account": {
+      "username": "alice-75",
+      "name": "Alice",
+      "description": "We love this wonderful city and we're pleased to be able to offer this apt so that you may enjoy it as well. Our wish is for you to feel very comfortable and get the most out of your stay. Welcome to Paris!",
+      "photo": {
+        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_380/v1584457943/airbnb/58ff73cc1765a998979a3390/MFv08J7E9u8ylyypdc.jpg",
+        "picture_id": "MFv08J7E9u8ylyypdc"
+      }
+    },
+    "rooms": ["58ff73d11765a998979a3396"]
+  },
+  {
+    "_id": "58ff73cc1765a998979a338d",
+    "email": "charles@airbnb-api.com",
+    "account": {
+      "username": "Charles-airbnb",
+      "name": "Charles",
+      "description": "I love cooking and travelling. I would be very happy to share with you my flat in Paris. I travel a lot for work and i don't often live in my apt.",
+      "photo": {
+        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_447/v1584458251/airbnb/58ff73cc1765a998979a338d/7YVZYZeITc8ax8mjws.jpg",
+        "picture_id": "7YVZYZeITc8ax8mjws"
+      }
+    },
+    "rooms": ["58ff73d11765a998979a3397"]
+  },
+  {
+    "_id": "58ff73cc1765a998979a338c",
+    "email": "astrid@airbnb-api.com",
+    "account": {
+      "username": "Astrid",
+      "name": "astrid",
+      "description": "My name is Astrid, I'm French, 29 years old and work for a communication agency specialized in food. I am passionate about food (of course!) and everything related to it. I also love reading, yoga, dogs, traveling, meeting new people and sharing a good meal with them !",
+      "photo": {
+        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_430/v1584458396/airbnb/58ff73cc1765a998979a338c/xe68QiMaDrQ_p6szeo.jpg",
+        "picture_id": "xe68QiMaDrQ_p6szeo"
+      }
+    },
+    "rooms": ["58ff73d11765a998979a33a0"]
+  },
+  {
+    "_id": "58ff73cc1765a998979a338e",
+    "email": "robert@airbnb-api.com",
+    "account": {
+      "username": "Robert-Paris",
+      "name": "Robert",
+      "description": "Hello, I'm married, 2 kids, leaving in the center of Paris and loving it. I rent my own place and manage a few others. For all of them, I'll be happy to advise you on your stay in Paris, nice places, best walks to reach them, shops, restaurants..... I'll be there. See you soon in Paris.",
+      "photo": {
+        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_408/v1584458524/airbnb/58ff73cc1765a998979a338e/cdksyTqEXzo_rvedtc.jpg",
+        "picture_id": "cdksyTqEXzo_rvedtc"
+      }
+    },
+    "rooms": ["58ff73cc1765a99897945391", "58ff73cc1765a9979391c532"]
+  },
+  {
+    "_id": "58ff73cc1765a998979a338f",
+    "email": "Charlene@airbnb-api.com",
+    "account": {
+      "username": "Charlène",
+      "name": "Charlène",
+      "description": "In the center of Paris, you will find on the 4th floor of a typical Parisian building a very nice flat with all necessary equipment.",
+      "photo": {
+        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_444/v1584458665/airbnb/58ff73cc1765a998979a338f/fWWiaDox0BU_b7i5ye.jpg",
+        "picture_id": "fWWiaDox0BU_b7i5ye"
+      }
+    },
+    "rooms": ["58ff73cc1765a998979a3391"]
+  }
+]
