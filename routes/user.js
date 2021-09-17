@@ -10,6 +10,7 @@ const Room = require("../models/Room");
 
 const isAuthenticated = require("../middlewares/isAuthenticated");
 const noModification = require("../middlewares/noModification");
+const validateEmailFormat = require("../functions/validateEmailFormat");
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_NAME,
@@ -18,59 +19,62 @@ cloudinary.config({
 });
 
 /* User signup */
-// router.post("/user/sign_up", async (req, res) => {
-//   try {
-//     const userEmail = await User.findOne({ email: req.fields.email });
+router.post("/user/sign_up", async (req, res) => {
+  const { email, username, password, name, description } = req.fields;
+  try {
+    if (email && username && password && name && description) {
+      const boolean = validateEmailFormat(email);
+      if (boolean) {
+        const foundEmail = await User.findOne({ email: email });
+        const foundUsername = await User.findOne({
+          "account.username": username,
+        });
+        if (!foundEmail && !foundUsername) {
+          const token = uid2(64);
+          const salt = uid2(64);
+          const hash = SHA256(password + salt).toString(encBase64);
 
-//     const userUsername = await User.findOne({
-//       "account.username": req.fields.username,
-//     });
+          const newUser = new User({
+            email: email,
+            token: token,
+            salt: salt,
+            hash: hash,
+            account: {
+              username,
+              description,
+              name,
+            },
+          });
 
-//     if (userEmail) {
-//       res.status(400).json({ error: "This email already has an account." });
-//     } else if (userUsername) {
-//       res.status(400).json({ error: "This username already has an account." });
-//     } else {
-//       if (
-//         req.fields.email &&
-//         req.fields.username &&
-//         req.fields.password &&
-//         req.fields.name &&
-//         req.fields.description
-//       ) {
-//         const token = uid2(64);
-//         const salt = uid2(64);
-//         const hash = SHA256(req.fields.password + salt).toString(encBase64);
-
-//         const newUser = new User({
-//           email: req.fields.email,
-//           token: token,
-//           salt: salt,
-//           hash: hash,
-//           account: {
-//             username: req.fields.username,
-//             description: req.fields.description,
-//             name: req.fields.name,
-//           },
-//         });
-
-//         await newUser.save();
-//         res.json({
-//           _id: newUser._id,
-//           token: newUser.token,
-//           email: newUser.email,
-//           username: newUser.account.username,
-//           description: newUser.account.description,
-//           name: newUser.account.name,
-//         });
-//       } else {
-//         res.status(400).json({ error: "Missing parameters" });
-//       }
-//     }
-//   } catch (error) {
-//     res.status(400).json({ error: error.message });
-//   }
-// });
+          await newUser.save();
+          res.json({
+            _id: newUser._id,
+            token: newUser.token,
+            email: newUser.email,
+            account: {
+              username: newUser.account.username,
+              description: newUser.account.description,
+              name: newUser.account.name,
+              photo: newUser.account.photo,
+            },
+          });
+        } else if (foundEmail) {
+          res.status(400).json({ error: "This email already has an account." });
+        } else if (foundUsername) {
+          res
+            .status(400)
+            .json({ error: "This username already has an account." });
+        }
+      } else {
+        res.status(400).json({ error: "Wrong email format" });
+      }
+    } else {
+      res.status(400).json({ error: "Missing parameters" });
+    }
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
 
 /* User login */
 // router.post("/user/log_in", async (req, res) => {
@@ -87,9 +91,12 @@ cloudinary.config({
 //           _id: user._id,
 //           token: user.token,
 //           email: user.email,
+// account : {
 //           username: user.account.username,
 //           description: user.account.description,
 //           name: user.account.name,
+// }
+
 //         });
 //       } else {
 //         res.status(401).json({ error: "Unauthorized" });
@@ -253,7 +260,7 @@ cloudinary.config({
 //             user.token = token;
 //             await user.save();
 
-//             const userEmail = user.email;
+//             confound = user.email;
 
 //             const mg = mailgun({
 //               apiKey: MAILGUN_API_KEY,
