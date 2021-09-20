@@ -77,37 +77,34 @@ router.post("/user/sign_up", async (req, res) => {
 });
 
 /* User login */
-// router.post("/user/log_in", async (req, res) => {
-//   if (req.fields.password && req.fields.email) {
-//     const user = await User.findOne({
-//       email: req.fields.email,
-//     });
-//     if (user) {
-//       if (
-//         SHA256(req.fields.password + user.salt).toString(encBase64) ===
-//         user.hash
-//       ) {
-//         res.json({
-//           _id: user._id,
-//           token: user.token,
-//           email: user.email,
-// account : {
-//           username: user.account.username,
-//           description: user.account.description,
-//           name: user.account.name,
-// }
-
-//         });
-//       } else {
-//         res.status(401).json({ error: "Unauthorized" });
-//       }
-//     } else {
-//       res.status(401).json({ error: "Unauthorized" });
-//     }
-//   } else {
-//     res.status(400).json({ error: "Missing parameters" });
-//   }
-// });
+router.post("/user/log_in", async (req, res) => {
+  const { email, password } = req.fields;
+  if (password && email) {
+    const user = await User.findOne({
+      email: email,
+    });
+    if (user) {
+      if (SHA256(password + user.salt).toString(encBase64) === user.hash) {
+        res.json({
+          _id: user._id,
+          token: user.token,
+          email: user.email,
+          account: {
+            username: user.account.username,
+            description: user.account.description,
+            name: user.account.name,
+          },
+        });
+      } else {
+        res.status(401).json({ error: "Unauthorized" });
+      }
+    } else {
+      res.status(401).json({ error: "Unauthorized" });
+    }
+  } else {
+    res.status(400).json({ error: "Missing parameters" });
+  }
+});
 
 /* Get one user */
 // router.get("/users/:id", async (req, res) => {
