@@ -20,7 +20,6 @@
     "helmet": "^3.23.3",
     "mongoose": "^5.13.9",
     "nodemailer": "^6.6.3",
-    "nodemailer-smtp-transport": "^2.7.4",
     "uid2": "0.0.3"
   }
 }
