@@ -4,13 +4,18 @@ const uid2 = require("uid2");
 const SHA256 = require("crypto-js/sha256");
 const encBase64 = require("crypto-js/enc-base64");
 const cloudinary = require("cloudinary").v2;
+const nodemailer = require("nodemailer");
+var smtpTransport = require("nodemailer-smtp-transport");
 
 const User = require("../models/User");
 const Room = require("../models/Room");
 
 const isAuthenticated = require("../middlewares/isAuthenticated");
 const noModification = require("../middlewares/noModification");
-const validateEmailFormat = require("../functions/validateEmailFormat");
+
+// Functions
+const validateEmailFormat = require("../utils/validateEmailFormat");
+const cleanEmail = require("../utils/cleanEmail");
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_NAME,
@@ -20,11 +25,13 @@ cloudinary.config({
 
 /* User signup */
 router.post("/user/sign_up", async (req, res) => {
-  const { email, username, password, name, description } = req.fields;
+  const { username, password, name, description } = req.fields;
+  let { email } = req.fields;
   try {
     if (email && username && password && name && description) {
       const boolean = validateEmailFormat(email);
       if (boolean) {
+        email = cleanEmail(email);
         const foundEmail = await User.findOne({ email: email });
         const foundUsername = await User.findOne({
           "account.username": username,
@@ -78,8 +85,11 @@ router.post("/user/sign_up", async (req, res) => {
 
 /* User login */
 router.post("/user/log_in", async (req, res) => {
-  const { email, password } = req.fields;
+  const { password } = req.fields;
+  let { email } = req.fields;
+
   if (password && email) {
+    email = cleanEmail(email);
     const user = await User.findOne({
       email: email,
     });
@@ -301,51 +311,58 @@ router.post("/user/log_in", async (req, res) => {
 //   }
 // );
 
-/* Send link to change password */
-// router.put("/user/recover_password", noModification, async (req, res) => {
-//   if (req.fields.email) {
-//     try {
-//       const user = await User.findOne({ email: req.fields.email });
+/* Send link to modify password (when user is not authenticated) */
+router.put("/user/recover_password", noModification, async (req, res) => {
+  let { email } = req.fields;
+  if (email) {
+    try {
+      email = cleanEmail(email);
+      console.log(email);
+      const user = await User.findOne({ email: email });
 
-//       if (user) {
-//         const update_password_token = uid2(64);
-//         user.updatePasswordToken = update_password_token;
+      if (user) {
+        const update_password_token = uid2(64);
+        user.updatePasswordToken = update_password_token;
 
-//         const update_password_expiredAt = Date.now();
-//         user.updatePasswordExpiredAt = update_password_expiredAt;
+        const update_password_expiredAt = Date.now();
+        user.updatePasswordExpiredAt = update_password_expiredAt;
 
-//         await user.save();
+        await user.save();
 
-//         const userEmail = user.email;
-//         const mg = mailgun({
-//           apiKey: MAILGUN_API_KEY,
-//           domain: MAILGUN_DOMAIN,
-//         });
+        let transporter = nodemailer.createTransport({
+          host: "smtp.outlook.com",
+          auth: {
+            user: process.env.NODEMAILER_USER,
+            pass: process.env.NODEMAILER_PASSWORD,
+          },
+        });
 
-//         const data = {
-//           from: "Airbnb API <postmaster@" + MAILGUN_DOMAIN + ">",
-//           to: userEmail,
-//           subject: "Change your password on Airbnb",
-//           text: `Please, click on the following link to change your password : https://airbnb/change_password?token=${update_password_token}. You have 15 minutes to change your password.`,
-//         };
+        let mailOptions = {
+          from: `Airbnb Clone 🏠 <${process.env.NODEMAILER_USER}>`,
+          to: email,
+          subject: "Modify your password on Airbnb clone - by Corinne Pradier",
+          text: `Please, click on the following link to modify your password : https://airbnb/change_password?token=${update_password_token}. You have 15 minutes to modify your password.`,
+        };
 
-//         mg.messages().send(data, function (error, body) {
-//           if (error) {
-//             res.status(400).json({ error: "An error occurred" });
-//           } else {
-//             res.json({ message: "A link has been sent to the user" });
-//           }
-//         });
-//       } else {
-//         return res.status(400).json({ message: "User not found" });
-//       }
-//     } catch (error) {
-//       res.status(400).json({ error: error.message });
-//     }
-//   } else {
-//     return res.status(400).json({ message: "Missing email" });
-//   }
-// });
+        transporter.sendMail(mailOptions, (error, info) => {
+          if (error) {
+            res.status(400).json({ error: "An error occurred" });
+          } else {
+            res.json({ message: "Mail successfully sent" });
+          }
+        });
+      } else {
+        return res
+          .status(400)
+          .json({ message: "This email does not exist in DB" });
+      }
+    } catch (error) {
+      res.status(400).json({ error: error.message });
+    }
+  } else {
+    return res.status(400).json({ message: "Missing email" });
+  }
+});
 
 /* User reset password */
 // router.put("/user/reset_password", noModification, async (req, res) => {

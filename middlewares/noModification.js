@@ -14,17 +14,22 @@ const roomsId = [
   "58ff73cc1765a9979391c532",
 ];
 
-const noModification = async (req, res, next) => {
-  const id = req.params.id;
+const usersMail = [
+  "alice@airbnb-api.com",
+  "charles@airbnb-api.com",
+  "astrid@airbnb-api.com",
+  "robert@airbnb-api.com",
+  "charlene@airbnb-api.com",
+];
 
-  if (usersId.indexOf(id) !== -1) {
-    return res
-      .status(400)
-      .json({ error: "You can't modify or delete this user !" });
+const noModification = async (req, res, next) => {
+  const { id } = req.params;
+  const { email } = req.fields;
+
+  if (usersId.indexOf(id) !== -1 || usersMail.indexOf(email) !== -1) {
+    return res.status(400).json({ error: "This user is not editable" });
   } else if (roomsId.indexOf(id) !== -1) {
-    return res
-      .status(400)
-      .json({ error: "You can't modify or delete this room !" });
+    return res.status(400).json({ error: "This room is not editable" });
   } else {
     return next();
   }
