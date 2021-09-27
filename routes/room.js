@@ -48,82 +48,15 @@ cloudinary.config({
 //   }
 // });
 
-/* Get rooms */
-// router.get("/rooms", async (req, res) => {
-//   const queryTab = Object.keys(req.query);
-
-//   try {
-//     if (queryTab.length > 0) {
-//       const createFilters = (req) => {
-//         const filters = {};
-
-//         if (req.query.title) {
-//           filters.title = new RegExp(req.query.title, "i");
-//         }
-
-//         if (req.query.priceMin) {
-//           filters.price = {};
-//           filters.price.$gte = req.query.priceMin;
-//         }
-
-//         if (req.query.priceMax) {
-//           if (filters.price) {
-//             filters.price.$lte = req.query.priceMax;
-//           } else {
-//             filters.price = {};
-//             filters.price.$lte = req.query.priceMax;
-//           }
-//         }
-
-//         return filters;
-//       };
-
-//       const filters = createFilters(req);
-
-//       const search = Room.find(filters, { description: false }).populate({
-//         path: "user",
-//         select: "account",
-//       });
-
-//       if (req.query.sort === "price-asc") {
-//         search.sort({ price: 1 });
-//       } else if (req.query.sort === "price-desc") {
-//         search.sort({ price: -1 });
-//       }
-
-//       if (req.query.page) {
-//         const page = Number(req.query.page);
-//         const limit = Number(req.query.limit);
-//         search.limit(limit).skip(limit * (page - 1));
-//       }
-
-//       const rooms = await search;
-
-//       res.json(rooms);
-//     } else {
-//       const rooms = await Room.find();
-
-//       if (rooms.length > 20) {
-//         const maxRooms = 20;
-
-//         let randomRooms = [];
-
-//         for (let i = 0; i < maxRooms; i++) {
-//           const randomNumber = Math.floor(Math.random() * rooms.length);
-
-//           if (randomRooms.indexOf(rooms[randomNumber]) === -1) {
-//             randomRooms.push(rooms[randomNumber]);
-//           }
-//         }
-//         res.json(randomRooms);
-//       } else {
-//         res.json(rooms);
-//       }
-//     }
-//   } catch (error) {
-//     res.status(400).json({ error: error.message });
-//   }
-// });
+/* Get all rooms */
+router.get("/rooms", async (req, res) => {
+  try {
+    const rooms = await Room.find();
+    res.json(rooms);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
 
 /* Get rooms around user */
 // router.get("/rooms/around", async (req, res) => {
