@@ -51,7 +51,11 @@ cloudinary.config({
 /* Get all rooms */
 router.get("/rooms", async (req, res) => {
   try {
-    const rooms = await Room.find();
+    const rooms = await Room.find().populate({
+      path: "user",
+      select: "account.photo.url",
+    });
+
     res.json(rooms);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -79,25 +83,27 @@ router.get("/rooms", async (req, res) => {
 // });
 
 /* Get one room */
-// router.get("/rooms/:id", async (req, res) => {
-//   if (req.params.id) {
-//     try {
-//       const room = await Room.findById(req.params.id).populate({
-//         path: "user",
-//         select: "account",
-//       });
-//       if (room) {
-//         res.json(room);
-//       } else {
-//         res.json({ message: "Room not found" });
-//       }
-//     } catch (error) {
-//       res.status(400).json({ error: error.message });
-//     }
-//   } else {
-//     res.status(400).json({ error: "Missing room id" });
-//   }
-// });
+router.get("/rooms/:id", async (req, res) => {
+  const { id } = req.params;
+  if (id) {
+    try {
+      const room = await Room.findById(id).populate({
+        path: "user",
+        select: "account",
+      });
+      if (room) {
+        console.log(room);
+        res.json(room);
+      } else {
+        res.json({ message: "Room not found" });
+      }
+    } catch (error) {
+      res.status(400).json({ error: error.message });
+    }
+  } else {
+    res.status(400).json({ error: "Missing room id" });
+  }
+});
 
 /* Update room (except pictures) */
 // router.put(
