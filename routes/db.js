@@ -26,10 +26,7 @@ router.get("/save_data", (req, res) => {
             price: data[i].price,
             ratingValue: data[i].ratingValue,
             reviews: data[i].reviews,
-            loc: {
-              lat: data[i].loc.lat,
-              lng: data[i].loc.lng,
-            },
+            location: [data[i].location.lat, data[i].location.lng],
             photos: data[i].photos,
             user: data[i].user,
           });
