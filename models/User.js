@@ -11,7 +11,10 @@ const User = mongoose.model("User", {
     username: { type: String, required: true, unique: true },
     name: String,
     description: String,
-    photo: { type: Object, default: null },
+    photo: {
+      type: mongoose.Schema.Types.Mixed,
+      default: {},
+    },
   },
   rooms: [
     {

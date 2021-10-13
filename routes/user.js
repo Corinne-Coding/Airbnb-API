@@ -116,122 +116,149 @@ router.post("/user/log_in", async (req, res) => {
 });
 
 /* Get one user */
-// router.get("/users/:id", async (req, res) => {
-//   if (req.params.id) {
-//     try {
-//       const user = await User.findById(req.params.id);
+router.get("/users/:id", async (req, res) => {
+  const { id } = req.params;
+  console.log(id);
+  if (id) {
+    try {
+      const user = await User.findById(id);
+      console.log(user);
+      if (user) {
+        res.json({
+          _id: user._id,
+          account: user.account,
+          rooms: user.rooms,
+        });
+      } else {
+        res.json({ message: "User not found" });
+      }
+    } catch (error) {
+      res.status(400).json({ error: error.message });
+    }
+  } else {
+    res.status(400).json({ error: "Missing id" });
+  }
+});
 
-//       if (user) {
-//         res.json({
-//           _id: user._id,
-//           account: user.account,
-//           rooms: user.rooms,
-//         });
-//       } else {
-//         res.json({ message: "User not found" });
-//       }
-//     } catch (error) {
-//       res.status(400).json({ error: error.message });
-//     }
-//   } else {
-//     res.status(400).json({ error: "Missing id" });
-//   }
-// });
+/* Update user (username, name, description, picture) */
+router.put(
+  "/user/update/:id",
+  [noModification, isAuthenticated],
+  async (req, res) => {
+    const { description, username, name } = req.fields;
+    const { picture } = req.files;
+    const { id } = req.params;
 
-/* Get rooms of one user */
-// router.get("/user/rooms/:id", async (req, res) => {
-//   if (req.params.id) {
-//     try {
-//       const user = await User.findById(req.params.id);
-//       if (user) {
-//         const userRooms = user.rooms;
+    try {
+      if (id) {
+        if (description || username || name || picture) {
+          if (username) {
+            // check if username is already in DB
+            const foundUsername = await User.findOne({
+              "account.username": username,
+            });
+            if (foundUsername) {
+              return res
+                .status(400)
+                .json({ message: "This username is already used." });
+            }
+          }
 
-//         if (userRooms.length > 0) {
-//           let tab = [];
+          const userToModify = await User.findById(id);
 
-//           for (let i = 0; i < userRooms.length; i++) {
-//             const room = await Room.findById(userRooms[i]);
+          if (description || username || name) {
+            // update description / username / name
+            description && (userToModify.account.description = description);
+            username && (userToModify.account.username = username);
+            name && (userToModify.account.name = name);
+          }
 
-//             tab.push(room);
-//           }
+          if (picture) {
+            // update picture
 
-//           res.json(tab);
-//         } else {
-//           res.status(200).json({ message: "This user has no room" });
-//         }
-//       } else {
-//         res.json({ message: "User not found" });
-//       }
-//     } catch (error) {
-//       res.status(400).json({ error: error.message });
-//     }
-//   } else {
-//     res.status(400).json({ error: "Missing id" });
-//   }
-// });
+            let option = {};
+            // setup option for Cloudinary request
+            if (!userToModify.account.photo.url) {
+              option = {
+                folder: `airbnb/${id}`,
+              };
+            } else {
+              option = { public_id: userToModify.account.photo.picture_id };
+            }
 
-/* Update user (except pictures & password) */
+            // upload picture on Cloudinary
+            await cloudinary.uploader.upload(
+              picture.path,
+              option,
+              async function (error, result) {
+                if (!error) {
+                  userToModify.account.photo.url = result.secure_url;
+                  userToModify.account.photo.picture_id = result.public_id;
+                } else {
+                  res.status(400).json({ error: error });
+                }
+              }
+            );
+          }
+
+          const updatedUser = await userToModify.save();
+          res.json({
+            account: updatedUser.account,
+            email: updatedUser.email,
+            _id: updatedUser._id,
+          });
+        } else {
+          res.status(400).json({ error: "Missing parameter(s)" });
+        }
+      } else {
+        res.status(400).json({ error: "Missing user id" });
+      }
+    } catch (error) {
+      res.status(400).json({ error: error.message });
+    }
+  }
+);
+
+/* User delete picture */
 // router.put(
-//   "/user/update",
+//   "/user/delete_picture/:id",
 //   [noModification, isAuthenticated],
 //   async (req, res) => {
-//     try {
-//       if (
-//         req.fields.email ||
-//         req.fields.description ||
-//         req.fields.username ||
-//         req.fields.name
-//       ) {
-//         if (req.fields.email) {
-//           const email = await User.findOne({ email: req.fields.email });
+//     if (req.params.id) {
+//       try {
+//         const user = await User.findById(req.params.id);
 
-//           if (email) {
-//             return res
-//               .status(400)
-//               .json({ message: "This email is already used." });
+//         if (user) {
+//           if (String(user._id) === String(req.user._id)) {
+//             if (user.account.photo) {
+//               await cloudinary.uploader.destroy(user.account.photo.picture_id);
+
+//               await User.findByIdAndUpdate(req.params.id, {
+//                 "account.photo": null,
+//               });
+
+//               const userUpdated = await User.findById(req.params.id);
+//               res.json({
+//                 account: userUpdated.account,
+//                 _id: userUpdated._id,
+//                 email: userUpdated.email,
+//                 rooms: userUpdated.rooms,
+//               });
+//             } else {
+//               res.status(400).json({ message: "No photo found" });
+//             }
+//           } else {
+//             res.status(401).json({ error: "Unauthorized" });
 //           }
+//         } else {
+//           res.status(400).json({ error: "User not found" });
 //         }
-
-//         if (req.fields.username) {
-//           const username = await User.findOne({
-//             "account.username": req.fields.username,
-//           });
-
-//           if (username) {
-//             return res
-//               .status(400)
-//               .json({ message: "This username is already used." });
-//           }
-//         }
-
-//         const user = req.user;
-
-//         if (req.fields.email) {
-//           user.email = req.fields.email;
-//         }
-//         if (req.fields.description) {
-//           user.account.description = req.fields.description;
-//         }
-//         if (req.fields.username) {
-//           user.account.username = req.fields.username;
-//         }
-//         if (req.fields.name) {
-//           user.account.name = req.fields.name;
-//         }
-
-//         await user.save();
-
-//         res.json({
-//           _id: user._id,
-//           email: user.email,
-//           account: user.account,
-//           rooms: user.rooms,
-//         });
-//       } else {
-//         res.status(400).json({ error: "Missing parameter(s)" });
+//       } catch (error) {
+//         res.status(400).json({ error: error.message });
 //       }
-//     } catch (error) {
-//       res.status(400).json({ error: error.message });
+//     } else {
+//       // si l'id de l'utilisateur n'a pas été envoyé
+//       res.status(400).json({ error: "Missing user id" });
 //     }
 //   }
 // );
@@ -311,57 +338,57 @@ router.post("/user/log_in", async (req, res) => {
 // );
 
 /* Send link to modify password (when user is not authenticated) */
-router.put("/user/recover_password", noModification, async (req, res) => {
-  let { email } = req.fields;
-  if (email) {
-    try {
-      email = cleanEmail(email);
-      console.log(email);
-      const user = await User.findOne({ email: email });
+// router.put("/user/recover_password", noModification, async (req, res) => {
+//   let { email } = req.fields;
+//   if (email) {
+//     try {
+//       email = cleanEmail(email);
+//       console.log(email);
+//       const user = await User.findOne({ email: email });
 
-      if (user) {
-        const update_password_token = uid2(64);
-        user.updatePasswordToken = update_password_token;
+//       if (user) {
+//         const update_password_token = uid2(64);
+//         user.updatePasswordToken = update_password_token;
 
-        const update_password_expiredAt = Date.now();
-        user.updatePasswordExpiredAt = update_password_expiredAt;
+//         const update_password_expiredAt = Date.now();
+//         user.updatePasswordExpiredAt = update_password_expiredAt;
 
-        await user.save();
+//         await user.save();
 
-        let transporter = nodemailer.createTransport({
-          host: "smtp.outlook.com",
-          auth: {
-            user: process.env.NODEMAILER_USER,
-            pass: process.env.NODEMAILER_PASSWORD,
-          },
-        });
+//         let transporter = nodemailer.createTransport({
+//           host: "smtp.outlook.com",
+//           auth: {
+//             user: process.env.NODEMAILER_USER,
+//             pass: process.env.NODEMAILER_PASSWORD,
+//           },
+//         });
 
-        let mailOptions = {
-          from: `Airbnb Clone 🏠 <${process.env.NODEMAILER_USER}>`,
-          to: email,
-          subject: "Modify your password on Airbnb clone - by Corinne Pradier",
-          text: `Please, click on the following link to modify your password : https://airbnb/change_password?token=${update_password_token}. You have 15 minutes to modify your password.`,
-        };
+//         let mailOptions = {
+//           from: `Airbnb Clone 🏠 <${process.env.NODEMAILER_USER}>`,
+//           to: email,
+//           subject: "Modify your password on Airbnb clone - by Corinne Pradier",
+//           text: `Please, click on the following link to modify your password : https://airbnb/change_password?token=${update_password_token}. You have 15 minutes to modify your password.`,
+//         };
 
-        transporter.sendMail(mailOptions, (error, info) => {
-          if (error) {
-            res.status(400).json({ error: "An error occurred" });
-          } else {
-            res.json({ message: "Mail successfully sent" });
-          }
-        });
-      } else {
-        return res
-          .status(400)
-          .json({ message: "This email does not exist in DB" });
-      }
-    } catch (error) {
-      res.status(400).json({ error: error.message });
-    }
-  } else {
-    return res.status(400).json({ message: "Missing email" });
-  }
-});
+//         transporter.sendMail(mailOptions, (error, info) => {
+//           if (error) {
+//             res.status(400).json({ error: "An error occurred" });
+//           } else {
+//             res.json({ message: "Mail successfully sent" });
+//           }
+//         });
+//       } else {
+//         return res
+//           .status(400)
+//           .json({ message: "This email does not exist in DB" });
+//       }
+//     } catch (error) {
+//       res.status(400).json({ error: error.message });
+//     }
+//   } else {
+//     return res.status(400).json({ message: "Missing email" });
+//   }
+// });
 
 /* User reset password */
 // router.put("/user/reset_password", noModification, async (req, res) => {
@@ -417,122 +444,6 @@ router.put("/user/recover_password", noModification, async (req, res) => {
 //   }
 // });
 
-/* User upload picture */
-// router.put(
-//   "/user/upload_picture/:id",
-//   [noModification, isAuthenticated],
-//   async (req, res) => {
-//     if (req.files.picture) {
-//       try {
-//         const user = await User.findById(req.params.id);
-
-//         if (user) {
-//           if (String(user._id) === String(req.user._id)) {
-//             if (!user.account.photo) {
-//               const newObj = {};
-
-//               await cloudinary.uploader.upload(
-//                 req.files.picture.path,
-
-//                 {
-//                   folder: "airbnb/" + req.params.id,
-//                 },
-
-//                 async function (error, result) {
-//                   newObj.url = result.secure_url;
-//                   newObj.picture_id = result.public_id;
-
-//                   await User.findByIdAndUpdate(req.params.id, {
-//                     "account.photo": newObj,
-//                   });
-//                 }
-//               );
-//             } else {
-//               const newObj = {};
-
-//               await cloudinary.uploader.upload(
-//                 req.files.picture.path,
-
-//                 { public_id: user.account.photo.picture_id },
-
-//                 async function (error, result) {
-//                   newObj.url = result.secure_url;
-//                   newObj.picture_id = result.public_id;
-
-//                   await User.findByIdAndUpdate(req.params.id, {
-//                     "account.photo": newObj,
-//                   });
-//                 }
-//               );
-//             }
-
-//             const userUpdated = await User.findById(req.params.id);
-
-//             res.json({
-//               account: userUpdated.account,
-//               _id: userUpdated._id,
-//               email: userUpdated.email,
-//               rooms: userUpdated.rooms,
-//             });
-//           } else {
-//             res.status(401).json({ error: "Unauthorized" });
-//           }
-//         } else {
-//           res.status(400).json({ error: "User not found" });
-//         }
-//       } catch (error) {
-//         res.status(400).json({ error: error.message });
-//       }
-//     } else {
-//       res.status(400).json({ error: "Missing picture" });
-//     }
-//   }
-// );
-
-/* User delete picture */
-// router.put(
-//   "/user/delete_picture/:id",
-//   [noModification, isAuthenticated],
-//   async (req, res) => {
-//     if (req.params.id) {
-//       try {
-//         const user = await User.findById(req.params.id);
-
-//         if (user) {
-//           if (String(user._id) === String(req.user._id)) {
-//             if (user.account.photo) {
-//               await cloudinary.uploader.destroy(user.account.photo.picture_id);
-
-//               await User.findByIdAndUpdate(req.params.id, {
-//                 "account.photo": null,
-//               });
-
-//               const userUpdated = await User.findById(req.params.id);
-//               res.json({
-//                 account: userUpdated.account,
-//                 _id: userUpdated._id,
-//                 email: userUpdated.email,
-//                 rooms: userUpdated.rooms,
-//               });
-//             } else {
-//               res.status(400).json({ message: "No photo found" });
-//             }
-//           } else {
-//             res.status(401).json({ error: "Unauthorized" });
-//           }
-//         } else {
-//           res.status(400).json({ error: "User not found" });
-//         }
-//       } catch (error) {
-//         res.status(400).json({ error: error.message });
-//       }
-//     } else {
-//       // si l'id de l'utilisateur n'a pas été envoyé
-//       res.status(400).json({ error: "Missing user id" });
-//     }
-//   }
-// );
-
 /* Delete user */
 // router.delete(
 //   "/user/delete",
@@ -555,5 +466,37 @@ router.put("/user/recover_password", noModification, async (req, res) => {
 //     }
 //   }
 // );
+
+/* Get rooms of one user */
+// router.get("/user/rooms/:id", async (req, res) => {
+//   if (req.params.id) {
+//     try {
+//       const user = await User.findById(req.params.id);
+//       if (user) {
+//         const userRooms = user.rooms;
+
+//         if (userRooms.length > 0) {
+//           let tab = [];
+
+//           for (let i = 0; i < userRooms.length; i++) {
+//             const room = await Room.findById(userRooms[i]);
+
+//             tab.push(room);
+//           }
+
+//           res.json(tab);
+//         } else {
+//           res.status(200).json({ message: "This user has no room" });
+//         }
+//       } else {
+//         res.json({ message: "User not found" });
+//       }
+//     } catch (error) {
+//       res.status(400).json({ error: error.message });
+//     }
+//   } else {
+//     res.status(400).json({ error: "Missing id" });
+//   }
+// });
 
 module.exports = router;
