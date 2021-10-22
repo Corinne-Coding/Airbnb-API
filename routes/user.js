@@ -118,11 +118,9 @@ router.post("/user/log_in", async (req, res) => {
 /* Get one user */
 router.get("/users/:id", async (req, res) => {
   const { id } = req.params;
-  console.log(id);
   if (id) {
     try {
       const user = await User.findById(id);
-      console.log(user);
       if (user) {
         res.json({
           _id: user._id,
@@ -130,7 +128,7 @@ router.get("/users/:id", async (req, res) => {
           rooms: user.rooms,
         });
       } else {
-        res.json({ message: "User not found" });
+        res.status(400).json({ message: "User not found" });
       }
     } catch (error) {
       res.status(400).json({ error: error.message });
@@ -144,6 +142,7 @@ router.get("/users/:id", async (req, res) => {
 router.put(
   "/user/update/:id",
   [noModification, isAuthenticated],
+
   async (req, res) => {
     const { description, username, name } = req.fields;
     const { picture } = req.files;
@@ -152,7 +151,7 @@ router.put(
     try {
       if (id) {
         if (description || username || name || picture) {
-          if (username) {
+          if (username && username !== req.user.account.username) {
             // check if username is already in DB
             const foundUsername = await User.findOne({
               "account.username": username,
@@ -180,7 +179,7 @@ router.put(
             // setup option for Cloudinary request
             if (!userToModify.account.photo.url) {
               option = {
-                folder: `airbnb/${id}`,
+                folder: `airbnb/users/${id}`,
               };
             } else {
               option = { public_id: userToModify.account.photo.picture_id };
@@ -192,7 +191,11 @@ router.put(
               option,
               async function (error, result) {
                 if (!error) {
-                  userToModify.account.photo.url = result.secure_url;
+                  const extension = result.secure_url.lastIndexOf(".");
+                  userToModify.account.photo.url = result.secure_url.slice(
+                    0,
+                    extension
+                  );
                   userToModify.account.photo.picture_id = result.public_id;
                 } else {
                   res.status(400).json({ error: error });
@@ -202,6 +205,7 @@ router.put(
           }
 
           const updatedUser = await userToModify.save();
+
           res.json({
             account: updatedUser.account,
             email: updatedUser.email,
