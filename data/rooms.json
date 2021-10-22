@@ -6,7 +6,7 @@
     "price": 219,
     "ratingValue": 5,
     "reviews": 84,
-    "location": { "lat": 48.848585, "lng": 2.292102 },
+    "location": [2.292102, 48.848585],
     "photos": [
       {
         "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_1099/v1584458967/airbnb/58ff73cc1765a998979a3390/zFGBEikZoRg_tph2dy.jpg",
@@ -39,7 +39,7 @@
     "price": 120,
     "ratingValue": 5,
     "reviews": 22,
-    "location": { "lat": 48.834921, "lng": 2.296913 },
+    "location": [2.296913, 48.834921],
     "photos": [
       {
         "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_1077/v1584459549/airbnb/58ff73cc1765a998979a338d/ZMIrSYeDEsc_xxt9vi.jpg",
@@ -72,7 +72,7 @@
     "price": 180,
     "ratingValue": 4,
     "reviews": 56,
-    "location": { "lat": 48.85939, "lng": 2.32687 },
+    "location": [2.32687, 48.85939],
     "photos": [
       {
         "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_1067/v1584459953/airbnb/58ff73cc1765a998979a338c/MyeOnGcibC_r9xzyn.jpg",
@@ -101,7 +101,7 @@
     "price": 110,
     "ratingValue": 5,
     "reviews": 15,
-    "location": { "lat": 48.8589507, "lng": 2.3325361 },
+    "location": [2.3325361, 48.8589507],
     "photos": [
       {
         "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_987/v1584460279/airbnb/58ff73cc1765a998979a338e/-lZsPR_tsQpw_amt37i.jpg",
@@ -126,7 +126,7 @@
     "price": 200,
     "ratingValue": 4,
     "reviews": 34,
-    "location": { "lat": 48.8480923, "lng": 2.3215788 },
+    "location": [2.3215788, 48.8480923],
     "photos": [
       {
         "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_985/v1584460392/airbnb/58ff73cc1765a998979a338e/FBXuXp57eM0_h_ysf2dp.jpg",
@@ -151,7 +151,7 @@
     "price": 190,
     "ratingValue": 5,
     "reviews": 8,
-    "location": { "lat": 48.863652, "lng": 2.361898 },
+    "location": [2.361898, 48.863652],
     "photos": [
       {
         "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_1148/v1584460864/airbnb/58ff73cc1765a998979a338f/df45f45-_pdzdts.jpg",

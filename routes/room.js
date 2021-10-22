@@ -33,7 +33,7 @@ router.get("/rooms/around", async (req, res) => {
       const rooms = await Room.find({
         location: {
           $near: [latitude, longitude],
-          $maxDistance: 0.2,
+          $maxDistance: 0.1,
         },
       });
       res.json(rooms);
