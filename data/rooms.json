@@ -17,10 +17,6 @@
         "picture_id": "U7PitHRnT_jo8m3p"
       },
       {
-        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_1063/v1584459064/airbnb/58ff73cc1765a998979a3390/nCXHU1hKk_vf1atn.jpg",
-        "picture_id": "nCXHU1hKk_vf1atn"
-      },
-      {
         "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_1023/v1584459076/airbnb/58ff73cc1765a998979a3390/hernaJFvHk_rpubek.jpg",
         "picture_id": "hernaJFvHk_rpubek"
       },
@@ -29,7 +25,7 @@
         "picture_id": "bd3sXD-jpg_eqkyd9"
       }
     ],
-    "user": "58ff73cc1765a998979a3390"
+    "user": "58ff73cc1765a998979a338b"
   },
 
   {
@@ -42,24 +38,20 @@
     "location": [2.296913, 48.834921],
     "photos": [
       {
-        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_1077/v1584459549/airbnb/58ff73cc1765a998979a338d/ZMIrSYeDEsc_xxt9vi.jpg",
-        "picture_id": "ZMIrSYeDEsc_xxt9vi"
+        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,h_1031/v1635684474/airbnb/58ff73cc1765a998979a338d/osdh_q0wklt.jpg",
+        "picture_id": "osdh_q0wklt"
       },
       {
-        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_1099/v1584459617/airbnb/58ff73cc1765a998979a338d/grant-N90LM3A5AZQjpg_jvfd6z.jpg",
-        "picture_id": "grant-N90LM3A5AZQjpg_jvfd6z"
+        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_552/v1635684474/airbnb/58ff73cc1765a998979a338d/hufgfu_vfc6ji.jpg",
+        "picture_id": "hufgfu_vfc6ji"
       },
       {
-        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_1028/v1584459634/airbnb/58ff73cc1765a998979a338d/-L6OoL86ut-kjpg_vrkfzc.jpg",
-        "picture_id": "-L6OoL86ut-kjpg_vrkfzc"
-      },
-      {
-        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_1013/v1584459587/airbnb/58ff73cc1765a998979a338d/intaJtmQloUM_mqnksk.jpg",
+        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_639/v1584459587/airbnb/58ff73cc1765a998979a338d/intaJtmQloUM_mqnksk.jpg",
         "picture_id": "intaJtmQloUM_mqnksk"
       },
       {
-        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_1087/v1584459579/airbnb/58ff73cc1765a998979a338d/XuXpeM0_xtt1mq.jpg",
-        "picture_id": "XuXpeM0_xtt1mq"
+        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_696/v1584459549/airbnb/58ff73cc1765a998979a338d/ZMIrSYeDEsc_xxt9vi.jpg",
+        "picture_id": "ZMIrSYeDEsc_xxt9vi"
       }
     ],
     "user": "58ff73cc1765a998979a338d"
@@ -68,27 +60,27 @@
   {
     "_id": "58ff73d11765a998979a33a0",
     "title": "French modern and luxury style apartment",
-    "description": "Located in the center of the city , French style, you can get everything downstairs : restaurants, bars, supermakets, pharmacy and so on.",
-    "price": 180,
-    "ratingValue": 4,
+    "description": "Located in the center of the city, French style, two bedrooms, fully equipped kitchen, you can get everything downstairs : restaurants, bars, supermakets, pharmacy and so on.",
+    "price": 250,
+    "ratingValue": 5,
     "reviews": 56,
     "location": [2.32687, 48.85939],
     "photos": [
       {
-        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_1067/v1584459953/airbnb/58ff73cc1765a998979a338c/MyeOnGcibC_r9xzyn.jpg",
-        "picture_id": "MyeOnGcibC_r9xzyn"
+        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_800/v1635683802/airbnb/58ff73cc1765a998979a338c/kitchen_tfrcfv.jpg",
+        "picture_id": "kitchen_tfrcfv"
       },
       {
-        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_1119/v1584459967/airbnb/58ff73cc1765a998979a338c/I72dFJRFT3_slw27r.jpg",
-        "picture_id": "I72dFJRFT3_slw27r"
+        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_800/v1635683749/airbnb/58ff73cc1765a998979a338c/bath_buriok.jpg",
+        "picture_id": "bath_buriok"
       },
       {
-        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_1006/v1584460021/airbnb/58ff73cc1765a998979a338c/B9J6abAHPA_yequhw.jpg",
-        "picture_id": "B9J6abAHPA_yequhw"
+        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_800/v1635683688/airbnb/58ff73cc1765a998979a338c/bedroom2_u10hzv.jpg",
+        "picture_id": "bedroom2_u10hzv"
       },
       {
-        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_1015/v1584460035/airbnb/58ff73cc1765a998979a338c/5MEFBvXKMVg_xjlv9l.jpg",
-        "picture_id": "5MEFBvXKMVg_xjlv9l"
+        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_800/v1635683683/airbnb/58ff73cc1765a998979a338c/modern-bedroom_cx7z3a.jpg",
+        "picture_id": "modern-bedroom_cx7z3a"
       }
     ],
     "user": "58ff73cc1765a998979a338c"
@@ -104,16 +96,16 @@
     "location": [2.3325361, 48.8589507],
     "photos": [
       {
-        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_987/v1584460279/airbnb/58ff73cc1765a998979a338e/-lZsPR_tsQpw_amt37i.jpg",
-        "picture_id": "-lZsPR_tsQpw_amt37i"
+        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_823/v1584460392/airbnb/58ff73cc1765a998979a338e/FBXuXp57eM0_h_ysf2dp.jpg",
+        "picture_id": "FBXuXp57eM0_h_ysf2dp"
       },
       {
-        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_1037/v1584460300/airbnb/58ff73cc1765a998979a338e/c0KnE3lCs_qwz897.jpg",
-        "picture_id": "c0KnE3lCs_qwz897"
+        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_537/v1584460399/airbnb/58ff73cc1765a998979a338e/EzoCn-jpg_goqxym.jpg",
+        "picture_id": "EzoCn-jpg_goqxym"
       },
       {
-        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_1056/v1584460331/airbnb/58ff73cc1765a998979a338e/jeZef9dczWMQ_arkwk8.jpg",
-        "picture_id": "jeZef9dczWMQ_arkwk8"
+        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_622/v1584460355/airbnb/58ff73cc1765a998979a338e/fiazeides_fxghgo.jpg",
+        "picture_id": "fiazeides_fxghgo.jpg"
       }
     ],
     "user": "58ff73cc1765a998979a338e"
@@ -122,26 +114,38 @@
   {
     "_id": "58ff73cc1765a9979391c532",
     "title": "Great location in Paris",
-    "description": "Little paradise, very trendy and exotic. This charming cocoon is for 3 persons, with private bathroom.",
+    "description": "Little paradise, very trendy and exotic. This charming cocoon is for 4 persons, with private bathroom.",
     "price": 200,
     "ratingValue": 4,
     "reviews": 34,
     "location": [2.3215788, 48.8480923],
     "photos": [
       {
-        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_985/v1584460392/airbnb/58ff73cc1765a998979a338e/FBXuXp57eM0_h_ysf2dp.jpg",
-        "picture_id": "FBXuXp57eM0_h_ysf2dp"
+        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_561/v1635685635/airbnb/58ff73cc1765a998979a338g/skbc_vpzihf.jpg",
+        "picture_id": "skbc_vpzihf.jpg"
       },
       {
-        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_1103/v1584460355/airbnb/58ff73cc1765a998979a338e/fiazeides_fxghgo.jpg",
-        "picture_id": "fiazeides_fxghgo"
+        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_580/v1635685635/airbnb/58ff73cc1765a998979a338g/qklsn_cctqoq.jpg",
+        "picture_id": "qklsn_cctqoq"
       },
       {
-        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_1038/v1584460399/airbnb/58ff73cc1765a998979a338e/EzoCn-jpg_goqxym.jpg",
-        "picture_id": "EzoCn-jpg_goqxym"
+        "url": "https://res.cloudinary.com/cococloud/image/upload/v1635685635/airbnb/58ff73cc1765a998979a338g/csbjkc_pyqei0.jpg",
+        "picture_id": "csbjkc_pyqei0"
+      },
+      {
+        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_597/v1635685635/airbnb/58ff73cc1765a998979a338g/qnsh_zd6jpe.jpg",
+        "picture_id": "qnsh_zd6jpe"
+      },
+      {
+        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_587/v1635685635/airbnb/58ff73cc1765a998979a338g/qsnd_rknsy4.jpg",
+        "picture_id": "qsnd_rknsy4"
+      },
+      {
+        "url": "https://res.cloudinary.com/cococloud/image/upload/v1635685635/airbnb/58ff73cc1765a998979a338g/sklbc_fvpusn.jpg",
+        "picture_id": "sklbc_fvpusn"
       }
     ],
-    "user": "58ff73cc1765a998979a338e"
+    "user": "58ff73cc1765a998979a338a"
   },
 
   {
@@ -151,14 +155,22 @@
     "price": 190,
     "ratingValue": 5,
     "reviews": 8,
-    "location": [2.361898, 48.863652],
+    "location": [2.359482, 48.842711],
     "photos": [
       {
-        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_1148/v1584460864/airbnb/58ff73cc1765a998979a338f/df45f45-_pdzdts.jpg",
+        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_785/v1584460864/airbnb/58ff73cc1765a998979a338f/df45f45-_pdzdts.jpg",
         "picture_id": "df45f45-_pdzdts"
       },
       {
-        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_1134/v1584460846/airbnb/58ff73cc1765a998979a338f/8MrEZAvyEjpg_ejisai.jpg",
+        "url": "https://res.cloudinary.com/cococloud/image/upload/v1635684884/airbnb/58ff73cc1765a998979a338f/slkdcihq_msd8gj.jpg",
+        "picture_id": "slkdcihq_msd8gj"
+      },
+      {
+        "url": "https://res.cloudinary.com/cococloud/image/upload/v1635684884/airbnb/58ff73cc1765a998979a338f/fsdf_mfzcvy.jpg",
+        "picture_id": "fsdf_mfzcvy"
+      },
+      {
+        "url": "https://res.cloudinary.com/cococloud/image/upload/c_scale,w_548/v1584460846/airbnb/58ff73cc1765a998979a338f/8MrEZAvyEjpg_ejisai.jpg",
         "picture_id": "8MrEZAvyEjpg_ejisai"
       }
     ],

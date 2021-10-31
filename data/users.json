@@ -1,6 +1,6 @@
 [
   {
-    "_id": "58ff73cc1765a998979a3390",
+    "_id": "58ff73cc1765a998979a338b",
     "email": "alice@airbnb-api.com",
     "account": {
       "username": "alice-75",
@@ -53,7 +53,7 @@
         "picture_id": "cdksyTqEXzo_rvedtc"
       }
     },
-    "rooms": ["58ff73cc1765a99897945391", "58ff73cc1765a9979391c532"]
+    "rooms": ["58ff73cc1765a99897945391"]
   },
   {
     "_id": "58ff73cc1765a998979a338f",
@@ -68,5 +68,19 @@
       }
     },
     "rooms": ["58ff73cc1765a998979a3391"]
+  },
+  {
+    "_id": "58ff73cc1765a998979a338a",
+    "email": "roland@airbnb-api.com",
+    "account": {
+      "username": "Roland",
+      "name": "Roland from Airbnb",
+      "description": "Welcome to Paris. I would be very happy to share my apartment with you.",
+      "photo": {
+        "url": "https://res.cloudinary.com/cococloud/image/upload/v1635685353/airbnb/58ff73cc1765a998979a338g/roland_edorz4.jpg",
+        "picture_id": "roland_edorz4"
+      }
+    },
+    "rooms": ["58ff73cc1765a9979391c532"]
   }
 ]
